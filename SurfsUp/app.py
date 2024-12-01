@@ -55,7 +55,7 @@ def precipitation():
     most_recent_date = session.query(func.max(Measurement.date)).scalar()
     one_year_ago = dt.datetime.strptime(most_recent_date, "%Y-%m-%d") - dt.timedelta(days=365)
 
-    """Quering precipitation data"""
+    """Querying precipitation data"""
     results = (
         session.query(Measurement.date, Measurement.prcp)
         .filter(Measurement.date >= one_year_ago.strftime("%Y-%m-%d"))
@@ -95,7 +95,7 @@ def tobs():
         .first()[0]
     )
 
-    # Quering temperature observations for the most active station in the last year
+    # Querying temperature observations for the most active station in the last year
     results = (
         session.query(Measurement.tobs)
         .filter(Measurement.station == most_active_station)
